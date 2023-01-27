@@ -1,0 +1,14 @@
+{
+  "name": "John Doe",
+  "address": "123 Main St",
+  "phone": "555-555-5555",
+  "email": "johndoe@example.com",
+  "education": [
+    { "degree": "Bachelors", "major": "Computer Science", "school": "University of XYZ", "year": "2010" },
+    { "degree": "Masters", "major": "Computer Science", "school": "University of ABC", "year": "2012" }
+  ],
+  "experience": [
+    { "title": "Software Engineer", "company": "ABC Corp", "start": "2012", "end": "2015" },
+    { "title": "Senior Software Engineer", "company": "DEF Inc", "start": "2015", "end": "2019" }
+  ]
+}

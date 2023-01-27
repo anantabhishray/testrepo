@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample Resume</title>
+  <style>
+    /* Add some basic styling to the resume */
+    #resume {
+      font-family: Arial, sans-serif;
+      margin: 0 auto;
+      width: 80%;
+    }
+    #resume h1, #resume h2 {
+      text-align: center;
+    }
+    #resume p {
+      line-height: 1.5;
+    }
+    #resume .education, #resume .experience {
+      margin-bottom: 1em;
+    }
+    #resume .education h2, #resume .experience h2 {
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="resume"></div>
+  <script>
+    // Fetch JSON data
+    fetch("resume.json")
+      .then(response => response.json())
+      .then(data => {
+        // Get reference to resume element
+        var resume = document.getElementById("resume");
+        // Create name element
+        var name = document.createElement("h1");
+        name.innerHTML = data.name;
+        resume.appendChild(name);
+        // Create address element
+        var address = document.createElement("p");
+        address.innerHTML = data.address;
+        resume.appendChild(address);
+        // Create phone element
+        var phone = document.createElement("p");
+        phone.innerHTML = "Phone: " + data.phone;
+        resume.appendChild(phone);
+        // Create email element
+        var email = document.createElement("p");
+        email.innerHTML = "Email: " + data.email;
+        resume.appendChild(email);
+        // Create education section
+        var education = document.createElement("h2");
+        education.innerHTML = "Education";
+        resume.appendChild(education);
+        for (var i = 0; i < data.education.length; i++) {
+          var edu = document.createElement("p");
+          edu.innerHTML = data.education[i].degree + " in " + data.education[i].major + " from " + data.education[i].school + " (" + data.education[i].year + ")";
+          resume.appendChild(edu);
+        }
+        // Create experience section
+        var experience = document.createElement("h2");
+        experience.innerHTML = "Experience";
+        resume.appendChild(experience);
+        for (var i = 0; i < data.experience.length; i++) {
+          var exp = document.createElement("p");
+          exp.innerHTML = data.experience[i].title + " at " + data.experience[i].company + " (" + data.experience[i].start + " - " + data.experience[i].end + ")";
+          resume.appendChild(exp);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  </script>
+</body>
+</html>
+
+
+
+
